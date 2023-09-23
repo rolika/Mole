@@ -1,21 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://cuywtmn7yllqy"]
+[gd_scene load_steps=4 format=3 uid="uid://cuywtmn7yllqy"]
 
 [ext_resource type="Script" path="res://mole.gd" id="1_munel"]
+[ext_resource type="Texture2D" uid="uid://deivvkh1esoe1" path="res://icon.svg" id="2_ajc8m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a2635"]
-size = Vector2(40, 40)
+size = Vector2(128, 128)
 
 [node name="Mole" type="Area2D"]
 script = ExtResource("1_munel")
 metadata/_edit_group_ = true
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
-color = Color(0.164706, 0.0509804, 0.00392157, 1)
+texture = ExtResource("2_ajc8m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(20, 20)
+position = Vector2(64, 64)
 shape = SubResource("RectangleShape2D_a2635")
 
 [node name="HideTimer" type="Timer" parent="."]

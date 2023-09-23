@@ -11,25 +11,25 @@ script = ExtResource("1_38le2")
 z_index = 1
 
 [node name="Mole" parent="." instance=ExtResource("2_4tly2")]
-position = Vector2(120, 336)
+position = Vector2(56, 208)
 
 [node name="Mole2" parent="." instance=ExtResource("2_4tly2")]
-position = Vector2(424, 112)
+position = Vector2(344, 16)
 
 [node name="Mole3" parent="." instance=ExtResource("2_4tly2")]
-position = Vector2(168, 136)
+position = Vector2(136, 48)
 
 [node name="Mole4" parent="." instance=ExtResource("2_4tly2")]
-position = Vector2(672, 328)
+position = Vector2(584, 224)
 
 [node name="Mole5" parent="." instance=ExtResource("2_4tly2")]
-position = Vector2(112, 480)
+position = Vector2(16, 448)
 
 [node name="Mole6" parent="." instance=ExtResource("2_4tly2")]
-position = Vector2(680, 472)
+position = Vector2(632, 432)
 
 [node name="Mole7" parent="." instance=ExtResource("2_4tly2")]
-position = Vector2(632, 168)
+position = Vector2(512, 48)
 
 [connection signal="smashed" from="Player" to="Mole" method="_on_player_smashed"]
 [connection signal="smashed" from="Player" to="Mole2" method="_on_player_smashed"]

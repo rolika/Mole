@@ -13,6 +13,7 @@ func _ready():
 	dancetimer = $DanceTimer
 	init_timer(hidetimer, 5)
 	init_timer(dancetimer, 3)
+	hide()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
