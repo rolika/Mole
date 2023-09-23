@@ -1,7 +1,8 @@
 extends Area2D
 
 
-signal threatened
+signal threatened(area)
+signal safe(area)
 
 
 # Called when the node enters the scene tree for the first time.
@@ -15,6 +16,8 @@ func _process(_delta):
 
 
 func _on_area_entered(area):
-	if area.name == "Player":
-		print("Player threatening")
-		threatened.emit()
+	threatened.emit(area)
+
+
+func _on_area_exited(area):
+	safe.emit(area)
