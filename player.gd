@@ -1,7 +1,7 @@
 extends Area2D
 
 
-signal smash
+signal smashed
 
 
 # Called when the node enters the scene tree for the first time.
@@ -16,8 +16,4 @@ func _process(_delta):
 
 func _input(event):
 	if event.is_action_pressed("smash"):
-		emit_signal("smash")
-		
-
-func _on_smash():
-	print("B A N G ! !")
+		smashed.emit()
