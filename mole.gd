@@ -1,13 +1,12 @@
 extends Area2D
 
 
-signal threatened()
-signal safe()
+var threatened: bool
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	threatened = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -16,8 +15,14 @@ func _process(_delta):
 
 
 func _on_area_entered(_area):
-	threatened.emit()
+	threatened = true
 
 
 func _on_area_exited(_area):
-	safe.emit()
+	threatened = false
+
+
+func _on_player_smashed():
+	if threatened:
+		print("BANG!!!")
+		hide()

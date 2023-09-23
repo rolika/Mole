@@ -11,13 +11,30 @@ script = ExtResource("1_38le2")
 z_index = 1
 
 [node name="Mole" parent="." instance=ExtResource("2_4tly2")]
-position = Vector2(168, 216)
+position = Vector2(120, 336)
 
 [node name="Mole2" parent="." instance=ExtResource("2_4tly2")]
-position = Vector2(536, 236)
+position = Vector2(424, 112)
 
-[connection signal="smashed" from="Player" to="." method="_on_player_smashed"]
-[connection signal="safe" from="Mole" to="." method="_on_mole_safe"]
-[connection signal="threatened" from="Mole" to="." method="_on_mole_threatened"]
-[connection signal="safe" from="Mole2" to="." method="_on_mole_safe"]
-[connection signal="threatened" from="Mole2" to="." method="_on_mole_threatened"]
+[node name="Mole3" parent="." instance=ExtResource("2_4tly2")]
+position = Vector2(168, 136)
+
+[node name="Mole4" parent="." instance=ExtResource("2_4tly2")]
+position = Vector2(672, 328)
+
+[node name="Mole5" parent="." instance=ExtResource("2_4tly2")]
+position = Vector2(112, 480)
+
+[node name="Mole6" parent="." instance=ExtResource("2_4tly2")]
+position = Vector2(680, 472)
+
+[node name="Mole7" parent="." instance=ExtResource("2_4tly2")]
+position = Vector2(632, 168)
+
+[connection signal="smashed" from="Player" to="Mole" method="_on_player_smashed"]
+[connection signal="smashed" from="Player" to="Mole3" method="_on_player_smashed"]
+[connection signal="smashed" from="Player" to="Mole2" method="_on_player_smashed"]
+[connection signal="smashed" from="Player" to="Mole4" method="_on_player_smashed"]
+[connection signal="smashed" from="Player" to="Mole5" method="_on_player_smashed"]
+[connection signal="smashed" from="Player" to="Mole6" method="_on_player_smashed"]
+[connection signal="smashed" from="Player" to="Mole7" method="_on_player_smashed"]
