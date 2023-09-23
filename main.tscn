@@ -1,35 +1,41 @@
-[gd_scene load_steps=4 format=3 uid="uid://ciixj23m2tf3t"]
+[gd_scene load_steps=5 format=3 uid="uid://ciixj23m2tf3t"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_38le2"]
 [ext_resource type="PackedScene" uid="uid://bvat1rvel3lkf" path="res://player.tscn" id="1_dk6sb"]
 [ext_resource type="PackedScene" uid="uid://cuywtmn7yllqy" path="res://mole.tscn" id="2_4tly2"]
+[ext_resource type="Texture2D" uid="uid://b7scvn5rcq1no" path="res://art/grassfield.png" id="4_hfoty"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_38le2")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_hfoty")
 
 [node name="Player" parent="." instance=ExtResource("1_dk6sb")]
 z_index = 1
 
 [node name="Mole" parent="." instance=ExtResource("2_4tly2")]
-position = Vector2(56, 208)
+position = Vector2(64, 264)
 
 [node name="Mole2" parent="." instance=ExtResource("2_4tly2")]
 position = Vector2(344, 16)
 
 [node name="Mole3" parent="." instance=ExtResource("2_4tly2")]
-position = Vector2(136, 48)
+position = Vector2(160, 80)
 
 [node name="Mole4" parent="." instance=ExtResource("2_4tly2")]
-position = Vector2(584, 224)
+position = Vector2(624, 264)
 
 [node name="Mole5" parent="." instance=ExtResource("2_4tly2")]
-position = Vector2(16, 448)
+position = Vector2(32, 472)
 
 [node name="Mole6" parent="." instance=ExtResource("2_4tly2")]
-position = Vector2(632, 432)
+position = Vector2(672, 448)
 
 [node name="Mole7" parent="." instance=ExtResource("2_4tly2")]
-position = Vector2(512, 48)
+position = Vector2(536, 104)
 
 [connection signal="smashed" from="Player" to="Mole" method="_on_player_smashed"]
 [connection signal="smashed" from="Player" to="Mole2" method="_on_player_smashed"]
