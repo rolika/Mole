@@ -32,8 +32,8 @@ position = Vector2(680, 472)
 position = Vector2(632, 168)
 
 [connection signal="smashed" from="Player" to="Mole" method="_on_player_smashed"]
-[connection signal="smashed" from="Player" to="Mole3" method="_on_player_smashed"]
 [connection signal="smashed" from="Player" to="Mole2" method="_on_player_smashed"]
+[connection signal="smashed" from="Player" to="Mole3" method="_on_player_smashed"]
 [connection signal="smashed" from="Player" to="Mole4" method="_on_player_smashed"]
 [connection signal="smashed" from="Player" to="Mole5" method="_on_player_smashed"]
 [connection signal="smashed" from="Player" to="Mole6" method="_on_player_smashed"]

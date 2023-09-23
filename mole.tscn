@@ -18,5 +18,13 @@ color = Color(0.164706, 0.0509804, 0.00392157, 1)
 position = Vector2(20, 20)
 shape = SubResource("RectangleShape2D_a2635")
 
+[node name="HideTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="DanceTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="timeout" from="HideTimer" to="." method="_on_hide_timer_timeout"]
+[connection signal="timeout" from="DanceTimer" to="." method="_on_dance_timer_timeout"]
