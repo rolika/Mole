@@ -14,14 +14,12 @@ func _process(_delta):
 	pass
 
 
-func _on_mole_threatened(area):
-	if area.name == "Player":
-		above_mole = true
+func _on_mole_threatened():
+	above_mole = true
 
 
-func _on_mole_safe(area):
-	if area.name == "Player":
-		above_mole = false
+func _on_mole_safe():
+	above_mole = false
 
 
 func _on_player_smashed():

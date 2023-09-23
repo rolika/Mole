@@ -1,8 +1,8 @@
 extends Area2D
 
 
-signal threatened(area)
-signal safe(area)
+signal threatened()
+signal safe()
 
 
 # Called when the node enters the scene tree for the first time.
@@ -15,9 +15,9 @@ func _process(_delta):
 	pass
 
 
-func _on_area_entered(area):
-	threatened.emit(area)
+func _on_area_entered(_area):
+	threatened.emit()
 
 
-func _on_area_exited(area):
-	safe.emit(area)
+func _on_area_exited(_area):
+	safe.emit()
