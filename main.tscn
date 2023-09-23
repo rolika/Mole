@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ciixj23m2tf3t"]
+
+[ext_resource type="PackedScene" uid="uid://bvat1rvel3lkf" path="res://player.tscn" id="1_dk6sb"]
+[ext_resource type="PackedScene" uid="uid://cuywtmn7yllqy" path="res://mole.tscn" id="2_4tly2"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_dk6sb")]
+
+[node name="Mole" parent="." instance=ExtResource("2_4tly2")]
+position = Vector2(168, 216)
+
+[node name="Mole2" parent="." instance=ExtResource("2_4tly2")]
+position = Vector2(344, 168)
