@@ -1,6 +1,11 @@
 extends Area2D
 
 
+const HIDETIME = 5
+const DANCETIME = 6
+const MIN_TIME = 2
+
+
 signal hit
 signal shame
 
@@ -14,8 +19,8 @@ func _ready():
 	threatened = false
 	hidetimer = $HideTimer
 	dancetimer = $DanceTimer
-	init_timer(hidetimer, 5)
-	init_timer(dancetimer, 3)
+	init_timer(hidetimer, HIDETIME)
+	init_timer(dancetimer, DANCETIME)
 	hide()
 	
 
@@ -28,7 +33,7 @@ func _on_area_exited(_area:Area2D):
 
 
 func _on_player_smashed():
-	if threatened:
+	if threatened and self.visible:
 		hit.emit()
 		hide_mole()
 	else:
@@ -37,7 +42,7 @@ func _on_player_smashed():
 
 func _on_hide_timer_timeout():
 	show()
-	init_timer(dancetimer, 3)
+	init_timer(dancetimer, DANCETIME)
 
 
 func _on_dance_timer_timeout():
@@ -46,10 +51,10 @@ func _on_dance_timer_timeout():
 
 
 func init_timer(timer:Timer, duration:int):
-	timer.wait_time = randi() % duration + 1
+	timer.wait_time = randi() % duration + MIN_TIME
 	timer.start()
 
 
 func hide_mole():
 	hide()	
-	init_timer(hidetimer, 5)
+	init_timer(hidetimer, HIDETIME)
