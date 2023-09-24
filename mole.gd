@@ -1,19 +1,15 @@
 extends Area2D
 
 
-const SCORE:int = 100
-const MAX_SHAME:int = 10
+signal hit
+signal shame
 
 
-var threatened: bool
-var hidetimer
-var dancetimer 
-
-static var score = 0
-static var shame = 0
+var threatened:bool
+var hidetimer:Timer
+var dancetimer:Timer
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	threatened = false
 	hidetimer = $HideTimer
@@ -21,26 +17,22 @@ func _ready():
 	init_timer(hidetimer, 5)
 	init_timer(dancetimer, 3)
 	hide()
+	
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
-
-
-func _on_area_entered(_area):
+func _on_area_entered(_area:Area2D):
 	threatened = true
 
 
-func _on_area_exited(_area):
+func _on_area_exited(_area:Area2D):
 	threatened = false
 
 
 func _on_player_smashed():
 	if threatened:
-		hit()
+		hit.emit()
+		hide_mole()
 	else:
-		shame_()
+		shame.emit()
 
 
 func _on_hide_timer_timeout():
@@ -49,24 +41,13 @@ func _on_hide_timer_timeout():
 
 
 func _on_dance_timer_timeout():
+	shame.emit()
 	hide_mole()
-	shame_()
 
 
 func init_timer(timer:Timer, duration:int):
 	timer.wait_time = randi() % duration + 1
 	timer.start()
-
-
-func hit():
-	score += SCORE
-	print("Score:", score)
-	hide_mole()
-	
-
-func shame_():	
-	shame += 1
-	print("Shame:", shame)
 
 
 func hide_mole():
