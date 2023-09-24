@@ -53,11 +53,8 @@ func _on_area_exited(_area:Area2D):
 func _on_player_smashed():
 	if threatened and exposed:
 		threatened = false
-		dancetimer.stop()
 		hit.emit()
 		direction = 1
-	else:
-		shame.emit()
 
 
 func _on_hide_timer_timeout():
