@@ -15,21 +15,31 @@ var threatened: bool
 var exposed: bool
 var hidetimer: Timer
 var dancetimer: Timer
-var crawltimer: Timer
 var direction: int
+var safepos: float
+var maxheight: float
 
 
 func _ready():
+	safepos = position.y
+	maxheight = safepos - $TextureRect.get_size().y * self.get_scale().y
 	threatened = false
 	exposed = false
 	hidetimer = $HideTimer
 	dancetimer = $DanceTimer
-	crawltimer = $CrawlTimer
 	init_timer(hidetimer, HIDETIME)
 
 
 func _process(delta):
 	position.y += CRAWL_SPEED * delta * direction
+	if position.y > safepos:  # mole descended
+		direction = 0
+		position.y = safepos
+		init_timer(hidetimer, HIDETIME)
+	if position.y < maxheight:  # mole ascended
+		direction = 0
+		position.y = maxheight
+		init_timer(dancetimer, DANCETIME)
 	
 
 func _on_area_entered(_area:Area2D):
@@ -44,37 +54,24 @@ func _on_player_smashed():
 	if threatened and exposed:
 		threatened = false
 		dancetimer.stop()
-		descend(hit)
+		hit.emit()
+		direction = 1
 	else:
 		shame.emit()
 
 
 func _on_hide_timer_timeout():
 	direction = -1
-	crawltimer.start()
 
 
 func _on_dance_timer_timeout():
-	descend(shame)
-
-
-func _on_crawl_timer_timeout():
-	if direction == -1:  # mole ascended and now is dancing
-		init_timer(dancetimer, DANCETIME)
-	else:  # mole descended and now is hiding
-		init_timer(hidetimer, HIDETIME)
-	direction = 0  # stand still while hiding or dancing
+	shame.emit()
+	direction = 1
 
 
 func init_timer(timer:Timer, duration:int):
 	timer.wait_time = randi() % duration + MIN_TIME
 	timer.start()
-
-
-func descend(cause:Signal):
-	cause.emit()
-	crawltimer.start()
-	direction = 1
 
 
 func _on_mole_hill_mole_exposed():
