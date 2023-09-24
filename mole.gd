@@ -28,7 +28,7 @@ func _ready():
 	init_timer(hidetimer, HIDETIME)
 
 
-func _process(delta):
+func _physics_process(delta):
 	position.y += CRAWL_SPEED * delta * direction
 	
 
@@ -42,6 +42,7 @@ func _on_area_exited(_area:Area2D):
 
 func _on_player_smashed():
 	if threatened and exposed:
+		$CollisionShape2D.set_deferred("disabled", true)
 		descend(hit)
 	else:
 		shame.emit()
@@ -49,7 +50,8 @@ func _on_player_smashed():
 
 func _on_hide_timer_timeout():
 	direction = -1
-	crawltimer.start()	
+	crawltimer.start()
+	$CollisionShape2D.set_deferred("disabled", false)
 
 
 func _on_dance_timer_timeout():
