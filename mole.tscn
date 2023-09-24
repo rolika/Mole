@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a2635"]
 size = Vector2(128, 128)
 
-[node name="Mole" type="Area2D" groups=["moles"]]
+[node name="Mole" type="Area2D"]
 scale = Vector2(0.3, 0.3)
 collision_layer = 2
 script = ExtResource("1_munel")

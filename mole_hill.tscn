@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_scs42"]
 size = Vector2(20.6667, 14)
 
-[node name="MoleHill" type="Area2D" groups=["molehills"]]
+[node name="MoleHill" type="Area2D"]
 scale = Vector2(3, 2)
 collision_layer = 4
 collision_mask = 2
