@@ -17,25 +17,25 @@ texture = ExtResource("4_hfoty")
 z_index = 1
 
 [node name="Mole" parent="." groups=["moles"] instance=ExtResource("2_4tly2")]
-position = Vector2(64, 264)
+position = Vector2(83, 312)
 
 [node name="Mole2" parent="." groups=["moles"] instance=ExtResource("2_4tly2")]
-position = Vector2(344, 16)
+position = Vector2(344, 96)
 
 [node name="Mole3" parent="." groups=["moles"] instance=ExtResource("2_4tly2")]
-position = Vector2(160, 80)
+position = Vector2(152, 155)
 
 [node name="Mole4" parent="." groups=["moles"] instance=ExtResource("2_4tly2")]
-position = Vector2(624, 264)
+position = Vector2(616, 312)
 
 [node name="Mole5" parent="." groups=["moles"] instance=ExtResource("2_4tly2")]
-position = Vector2(32, 472)
+position = Vector2(64, 520)
 
 [node name="Mole6" parent="." groups=["moles"] instance=ExtResource("2_4tly2")]
-position = Vector2(672, 448)
+position = Vector2(664, 467)
 
 [node name="Mole7" parent="." groups=["moles"] instance=ExtResource("2_4tly2")]
-position = Vector2(536, 104)
+position = Vector2(528, 160)
 
 [connection signal="smashed" from="Player" to="Mole" method="_on_player_smashed"]
 [connection signal="smashed" from="Player" to="Mole2" method="_on_player_smashed"]

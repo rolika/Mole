@@ -4,24 +4,30 @@ extends Area2D
 const HIDETIME = 5
 const DANCETIME = 6
 const MIN_TIME = 2
+const CRAWL_SPEED = 30
 
 
 signal hit
 signal shame
 
 
-var threatened:bool
-var hidetimer:Timer
-var dancetimer:Timer
+var threatened: bool
+var hidetimer: Timer
+var dancetimer: Timer
+var crawltimer: Timer
+var direction: int
 
 
 func _ready():
 	threatened = false
 	hidetimer = $HideTimer
 	dancetimer = $DanceTimer
+	crawltimer = $CrawlTimer
 	init_timer(hidetimer, HIDETIME)
-	init_timer(dancetimer, DANCETIME)
-	hide()
+
+
+func _process(delta):
+	position.y += CRAWL_SPEED * delta * direction
 	
 
 func _on_area_entered(_area:Area2D):
@@ -33,21 +39,27 @@ func _on_area_exited(_area:Area2D):
 
 
 func _on_player_smashed():
-	if threatened and self.visible:
-		hit.emit()
-		hide_mole()
+	if threatened:
+		descend(hit)
 	else:
 		shame.emit()
 
 
 func _on_hide_timer_timeout():
-	show()
-	init_timer(dancetimer, DANCETIME)
+	direction = -1
+	crawltimer.start()	
 
 
 func _on_dance_timer_timeout():
-	shame.emit()
-	hide_mole()
+	descend(shame)
+
+
+func _on_crawl_timer_timeout():
+	if direction == -1:  # mole ascended and now is dancing
+		init_timer(dancetimer, DANCETIME)
+	else:  # mole descended and now is hiding
+		init_timer(hidetimer, HIDETIME)
+	direction = 0  # stand still while hiding or dancing
 
 
 func init_timer(timer:Timer, duration:int):
@@ -55,6 +67,8 @@ func init_timer(timer:Timer, duration:int):
 	timer.start()
 
 
-func hide_mole():
-	hide()	
-	init_timer(hidetimer, HIDETIME)
+func descend(cause:Signal):
+	cause.emit()
+	crawltimer.start()
+	direction = 1
+	
