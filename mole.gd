@@ -1,9 +1,16 @@
 extends Area2D
 
 
+const SCORE:int = 100
+const MAX_SHAME:int = 10
+
+
 var threatened: bool
 var hidetimer
 var dancetimer 
+
+static var score = 0
+static var shame = 0
 
 
 # Called when the node enters the scene tree for the first time.
@@ -31,8 +38,9 @@ func _on_area_exited(_area):
 
 func _on_player_smashed():
 	if threatened:
-		print("BANG!!!")
-		_on_dance_timer_timeout()
+		hit()
+	else:
+		shame_()
 
 
 func _on_hide_timer_timeout():
@@ -41,9 +49,26 @@ func _on_hide_timer_timeout():
 
 
 func _on_dance_timer_timeout():
-	hide()	
-	init_timer(hidetimer, 5)
+	hide_mole()
+	shame_()
+
 
 func init_timer(timer:Timer, duration:int):
 	timer.wait_time = randi() % duration + 1
 	timer.start()
+
+
+func hit():
+	score += SCORE
+	print("Score:", score)
+	hide_mole()
+	
+
+func shame_():	
+	shame += 1
+	print("Shame:", shame)
+
+
+func hide_mole():
+	hide()	
+	init_timer(hidetimer, 5)
