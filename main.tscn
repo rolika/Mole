@@ -18,46 +18,46 @@ texture = ExtResource("4_hfoty")
 z_index = 1
 
 [node name="Mole" parent="." instance=ExtResource("2_4tly2")]
-position = Vector2(83, 312)
+position = Vector2(56, 528)
 
 [node name="Mole2" parent="." instance=ExtResource("2_4tly2")]
-position = Vector2(344, 96)
+position = Vector2(80, 324)
 
 [node name="Mole3" parent="." instance=ExtResource("2_4tly2")]
 position = Vector2(152, 155)
 
 [node name="Mole4" parent="." instance=ExtResource("2_4tly2")]
-position = Vector2(616, 312)
+position = Vector2(352, 104)
 
 [node name="Mole5" parent="." instance=ExtResource("2_4tly2")]
-position = Vector2(64, 520)
+position = Vector2(512, 155)
 
 [node name="Mole6" parent="." instance=ExtResource("2_4tly2")]
-position = Vector2(664, 467)
+position = Vector2(639, 286)
 
 [node name="Mole7" parent="." instance=ExtResource("2_4tly2")]
-position = Vector2(528, 160)
+position = Vector2(672, 464)
 
 [node name="MoleHill" parent="." instance=ExtResource("5_lhont")]
-position = Vector2(24, 504)
+position = Vector2(16, 512)
 
 [node name="MoleHill2" parent="." instance=ExtResource("5_lhont")]
-position = Vector2(48, 296)
+position = Vector2(40, 305)
 
 [node name="MoleHill3" parent="." instance=ExtResource("5_lhont")]
 position = Vector2(112, 136)
 
 [node name="MoleHill4" parent="." instance=ExtResource("5_lhont")]
-position = Vector2(304, 80)
+position = Vector2(312, 88)
 
 [node name="MoleHill5" parent="." instance=ExtResource("5_lhont")]
-position = Vector2(488, 144)
+position = Vector2(472, 136)
 
 [node name="MoleHill6" parent="." instance=ExtResource("5_lhont")]
-position = Vector2(576, 294)
+position = Vector2(600, 272)
 
 [node name="MoleHill7" parent="." instance=ExtResource("5_lhont")]
-position = Vector2(624, 448)
+position = Vector2(632, 448)
 
 [connection signal="smashed" from="Player" to="Mole" method="_on_player_smashed"]
 [connection signal="smashed" from="Player" to="Mole2" method="_on_player_smashed"]
@@ -80,3 +80,17 @@ position = Vector2(624, 448)
 [connection signal="shame" from="Mole6" to="." method="_on_mole_shame"]
 [connection signal="hit" from="Mole7" to="." method="_on_mole_hit"]
 [connection signal="shame" from="Mole7" to="." method="_on_mole_shame"]
+[connection signal="mole_exposed" from="MoleHill" to="Mole" method="_on_mole_hill_mole_exposed"]
+[connection signal="mole_safe" from="MoleHill" to="Mole" method="_on_mole_hill_mole_safe"]
+[connection signal="mole_exposed" from="MoleHill2" to="Mole2" method="_on_mole_hill_mole_exposed"]
+[connection signal="mole_safe" from="MoleHill2" to="Mole2" method="_on_mole_hill_mole_safe"]
+[connection signal="mole_exposed" from="MoleHill3" to="Mole3" method="_on_mole_hill_mole_exposed"]
+[connection signal="mole_safe" from="MoleHill3" to="Mole3" method="_on_mole_hill_mole_safe"]
+[connection signal="mole_exposed" from="MoleHill4" to="Mole4" method="_on_mole_hill_mole_exposed"]
+[connection signal="mole_safe" from="MoleHill4" to="Mole4" method="_on_mole_hill_mole_safe"]
+[connection signal="mole_exposed" from="MoleHill5" to="Mole5" method="_on_mole_hill_mole_exposed"]
+[connection signal="mole_safe" from="MoleHill5" to="Mole5" method="_on_mole_hill_mole_safe"]
+[connection signal="mole_exposed" from="MoleHill6" to="Mole6" method="_on_mole_hill_mole_exposed"]
+[connection signal="mole_safe" from="MoleHill6" to="Mole6" method="_on_mole_hill_mole_safe"]
+[connection signal="mole_exposed" from="MoleHill7" to="Mole7" method="_on_mole_hill_mole_exposed"]
+[connection signal="mole_safe" from="MoleHill7" to="Mole7" method="_on_mole_hill_mole_safe"]

@@ -12,6 +12,7 @@ signal shame
 
 
 var threatened: bool
+var exposed: bool
 var hidetimer: Timer
 var dancetimer: Timer
 var crawltimer: Timer
@@ -20,6 +21,7 @@ var direction: int
 
 func _ready():
 	threatened = false
+	exposed = false
 	hidetimer = $HideTimer
 	dancetimer = $DanceTimer
 	crawltimer = $CrawlTimer
@@ -39,7 +41,7 @@ func _on_area_exited(_area:Area2D):
 
 
 func _on_player_smashed():
-	if threatened:
+	if threatened and exposed:
 		descend(hit)
 	else:
 		shame.emit()
@@ -71,4 +73,11 @@ func descend(cause:Signal):
 	cause.emit()
 	crawltimer.start()
 	direction = 1
-	
+
+
+func _on_mole_hill_mole_exposed():
+	exposed = true
+
+
+func _on_mole_hill_mole_safe():
+	exposed = false

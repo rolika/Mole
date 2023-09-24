@@ -11,6 +11,7 @@ scale = Vector2(3, 2)
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_fyg7n")
+metadata/_edit_group_ = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 40.0
@@ -22,3 +23,4 @@ position = Vector2(21, -5)
 shape = SubResource("RectangleShape2D_scs42")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
