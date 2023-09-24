@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://ciixj23m2tf3t"]
+[gd_scene load_steps=6 format=3 uid="uid://ciixj23m2tf3t"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_38le2"]
 [ext_resource type="PackedScene" uid="uid://bvat1rvel3lkf" path="res://player.tscn" id="1_dk6sb"]
 [ext_resource type="PackedScene" uid="uid://cuywtmn7yllqy" path="res://mole.tscn" id="2_4tly2"]
 [ext_resource type="Texture2D" uid="uid://b7scvn5rcq1no" path="res://art/grassfield.png" id="4_hfoty"]
+[ext_resource type="PackedScene" uid="uid://cctaeaq28exs7" path="res://mole_hill.tscn" id="5_lhont"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_38le2")
@@ -16,26 +17,47 @@ texture = ExtResource("4_hfoty")
 [node name="Player" parent="." instance=ExtResource("1_dk6sb")]
 z_index = 1
 
-[node name="Mole" parent="." groups=["moles"] instance=ExtResource("2_4tly2")]
+[node name="Mole" parent="." instance=ExtResource("2_4tly2")]
 position = Vector2(83, 312)
 
-[node name="Mole2" parent="." groups=["moles"] instance=ExtResource("2_4tly2")]
+[node name="Mole2" parent="." instance=ExtResource("2_4tly2")]
 position = Vector2(344, 96)
 
-[node name="Mole3" parent="." groups=["moles"] instance=ExtResource("2_4tly2")]
+[node name="Mole3" parent="." instance=ExtResource("2_4tly2")]
 position = Vector2(152, 155)
 
-[node name="Mole4" parent="." groups=["moles"] instance=ExtResource("2_4tly2")]
+[node name="Mole4" parent="." instance=ExtResource("2_4tly2")]
 position = Vector2(616, 312)
 
-[node name="Mole5" parent="." groups=["moles"] instance=ExtResource("2_4tly2")]
+[node name="Mole5" parent="." instance=ExtResource("2_4tly2")]
 position = Vector2(64, 520)
 
-[node name="Mole6" parent="." groups=["moles"] instance=ExtResource("2_4tly2")]
+[node name="Mole6" parent="." instance=ExtResource("2_4tly2")]
 position = Vector2(664, 467)
 
-[node name="Mole7" parent="." groups=["moles"] instance=ExtResource("2_4tly2")]
+[node name="Mole7" parent="." instance=ExtResource("2_4tly2")]
 position = Vector2(528, 160)
+
+[node name="MoleHill" parent="." instance=ExtResource("5_lhont")]
+position = Vector2(24, 504)
+
+[node name="MoleHill2" parent="." instance=ExtResource("5_lhont")]
+position = Vector2(48, 296)
+
+[node name="MoleHill3" parent="." instance=ExtResource("5_lhont")]
+position = Vector2(112, 136)
+
+[node name="MoleHill4" parent="." instance=ExtResource("5_lhont")]
+position = Vector2(304, 80)
+
+[node name="MoleHill5" parent="." instance=ExtResource("5_lhont")]
+position = Vector2(488, 144)
+
+[node name="MoleHill6" parent="." instance=ExtResource("5_lhont")]
+position = Vector2(576, 294)
+
+[node name="MoleHill7" parent="." instance=ExtResource("5_lhont")]
+position = Vector2(624, 448)
 
 [connection signal="smashed" from="Player" to="Mole" method="_on_player_smashed"]
 [connection signal="smashed" from="Player" to="Mole2" method="_on_player_smashed"]
