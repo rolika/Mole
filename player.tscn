@@ -6,6 +6,7 @@
 size = Vector2(40, 40)
 
 [node name="Player" type="Area2D"]
+collision_mask = 2
 script = ExtResource("1_lgyto")
 
 [node name="ColorRect" type="ColorRect" parent="."]
