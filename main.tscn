@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://ciixj23m2tf3t"]
+[gd_scene load_steps=7 format=3 uid="uid://ciixj23m2tf3t"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_38le2"]
 [ext_resource type="PackedScene" uid="uid://bvat1rvel3lkf" path="res://player.tscn" id="1_dk6sb"]
 [ext_resource type="PackedScene" uid="uid://cuywtmn7yllqy" path="res://mole.tscn" id="2_4tly2"]
 [ext_resource type="Texture2D" uid="uid://b7scvn5rcq1no" path="res://art/grassfield.png" id="4_hfoty"]
 [ext_resource type="PackedScene" uid="uid://cctaeaq28exs7" path="res://mole_hill.tscn" id="5_lhont"]
+[ext_resource type="PackedScene" uid="uid://bu814wsj38k0s" path="res://hud.tscn" id="6_hgmp7"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_38le2")
@@ -58,6 +59,8 @@ position = Vector2(600, 272)
 
 [node name="MoleHill7" parent="." instance=ExtResource("5_lhont")]
 position = Vector2(632, 448)
+
+[node name="HUD" parent="." instance=ExtResource("6_hgmp7")]
 
 [connection signal="smashed" from="Player" to="Mole" method="_on_player_smashed"]
 [connection signal="smashed" from="Player" to="Mole2" method="_on_player_smashed"]
