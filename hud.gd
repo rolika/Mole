@@ -5,7 +5,7 @@ signal start_game
 
 
 func update_score(score):
-	$ScoreValue.text = score
+	$ScoreValue.text = str(score)
 	
 
 func update_shame(shame):
