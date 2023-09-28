@@ -25,3 +25,12 @@ func _on_mole_hit():
 func _on_mole_shame():
 	shame += 1
 	print("Shame:", shame)
+
+
+func _on_hud_start_game():
+	print("Game started")
+	get_tree().call_group("moles", "new_game")
+
+
+func new_game(mole):
+	mole.new_game()

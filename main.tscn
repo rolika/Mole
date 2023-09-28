@@ -97,3 +97,4 @@ position = Vector2(632, 448)
 [connection signal="mole_safe" from="MoleHill6" to="Mole6" method="_on_mole_hill_mole_safe"]
 [connection signal="mole_exposed" from="MoleHill7" to="Mole7" method="_on_mole_hill_mole_exposed"]
 [connection signal="mole_safe" from="MoleHill7" to="Mole7" method="_on_mole_hill_mole_safe"]
+[connection signal="start_game" from="HUD" to="." method="_on_hud_start_game"]

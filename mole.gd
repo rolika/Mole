@@ -27,6 +27,10 @@ func _ready():
 	exposed = false
 	hidetimer = $HideTimer
 	dancetimer = $DanceTimer
+
+
+func new_game():
+	position.y = safepos
 	init_timer(hidetimer, HIDETIME)
 
 
