@@ -62,6 +62,7 @@ position = Vector2(632, 448)
 
 [node name="HUD" parent="." instance=ExtResource("6_hgmp7")]
 
+[connection signal="game_over" from="." to="HUD" method="_on_main_game_over"]
 [connection signal="smashed" from="Player" to="Mole" method="_on_player_smashed"]
 [connection signal="smashed" from="Player" to="Mole2" method="_on_player_smashed"]
 [connection signal="smashed" from="Player" to="Mole3" method="_on_player_smashed"]

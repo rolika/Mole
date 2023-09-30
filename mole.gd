@@ -24,15 +24,20 @@ var maxheight: float
 
 func _ready():
 	safepos = position.y
-	maxheight = safepos - $TextureRect.get_size().y * self.get_scale().y
-	state.append(STANDBY)
+	maxheight = safepos - $TextureRect.get_size().y * self.get_scale().y	
 	hidetimer = $HideTimer
 	dancetimer = $DanceTimer
-	print(state)
+	stand_by()
+
+
+func stand_by():
+	position.y = safepos
+	state.append(STANDBY)
+	hidetimer.stop()
+	dancetimer.stop()
 
 
 func new_session():
-	position.y = safepos
 	state.append(HARMED)  # harmed state needed for the frist time
 	remove(STANDBY)
 	init_timer(hidetimer, HIDETIME)
