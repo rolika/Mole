@@ -32,6 +32,7 @@ func _ready():
 
 func stand_by():
 	position.y = safepos
+	state.clear()
 	state.append(STANDBY)
 	hidetimer.stop()
 	dancetimer.stop()
