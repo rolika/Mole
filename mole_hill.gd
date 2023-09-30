@@ -6,7 +6,6 @@ signal mole_safe
 
 
 func _on_area_entered(_area):
-	print("Mole exposed.")
 	mole_exposed.emit()
 
 

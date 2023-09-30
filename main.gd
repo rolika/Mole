@@ -28,8 +28,4 @@ func _on_mole_shame():
 func _on_hud_start_game():
 	score = 0
 	shame = 0
-	get_tree().call_group("moles", "new_game")
-
-
-func new_game(mole):
-	mole.new_game()
+	get_tree().call_group("moles", "new_session")
