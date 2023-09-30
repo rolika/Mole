@@ -38,15 +38,11 @@ func stand_by():
 
 
 func new_session():
-	state.append(HARMED)  # harmed state needed for the frist time
 	remove(STANDBY)
 	init_timer(hidetimer, HIDETIME)
 
 
 func _on_hide_timer_timeout():
-	if not state.has(HARMED):  # that's why harmed is needed at new session
-		shame.emit()
-	remove(HARMED)
 	direction = -1
 
 
@@ -69,13 +65,16 @@ func _on_mole_hill_mole_exposed():
 
 func _on_mole_hill_mole_safe():
 	remove(EXPOSED)
+	if not state.has(HARMED):
+		shame.emit()
+	remove(HARMED)
 	
 
 func _on_area_entered(_area:Area2D):
 	state.append(THREATENED)
 
 
-func _on_area_exited(_area:Area2D):	
+func _on_area_exited(_area:Area2D):
 	remove(THREATENED)
 
 
