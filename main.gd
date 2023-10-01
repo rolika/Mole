@@ -2,7 +2,7 @@ extends Node2D
 
 
 const SCORE = 100  # score for each mole smashed
-const MAX_SHAME = 10  # it's a shame if you let a mole go or miss it
+const MAX_SHAME = 10  # it's a shame if you let a mole go
 
 
 signal game_over
