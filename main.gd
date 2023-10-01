@@ -21,6 +21,7 @@ func _ready():
 func _on_mole_hit():
 	score += SCORE
 	$HUD.update_score(score)
+	$HitSound.play()
 
 
 func _on_mole_shame():
