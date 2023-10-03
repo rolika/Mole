@@ -33,7 +33,7 @@ func _ready():
 func stand_by():
 	position.y = safepos
 	state.clear()
-	state.append(STANDBY)
+	apply(STANDBY)
 	hidetimer.stop()
 	dancetimer.stop()
 
@@ -61,7 +61,7 @@ func _process(delta):
 
 
 func _on_mole_hill_mole_exposed():
-	state.append(EXPOSED)
+	apply(EXPOSED)
 
 
 func _on_mole_hill_mole_safe():
@@ -72,7 +72,7 @@ func _on_mole_hill_mole_safe():
 	
 
 func _on_area_entered(_area:Area2D):
-	state.append(THREATENED)
+	apply(THREATENED)
 
 
 func _on_area_exited(_area:Area2D):
@@ -82,7 +82,7 @@ func _on_area_exited(_area:Area2D):
 func _on_player_smashed():
 	if state.has(EXPOSED) and state.has(THREATENED):
 		remove(THREATENED)
-		state.append(HARMED)
+		apply(HARMED)
 		hit.emit()
 		direction = 1
 
@@ -94,6 +94,12 @@ func _on_dance_timer_timeout():
 func init_timer(timer:Timer, duration:int):
 	timer.wait_time = randi() % duration + MIN_TIME
 	timer.start()
+
+
+func apply(state_):
+	var idx = state.find(state_)
+	if idx < 0:
+		state.append(state_)
 
 
 func remove(state_):
