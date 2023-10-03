@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b7scvn5rcq1no" path="res://art/grassfield.png" id="4_hfoty"]
 [ext_resource type="PackedScene" uid="uid://cctaeaq28exs7" path="res://mole_hill.tscn" id="5_lhont"]
 [ext_resource type="PackedScene" uid="uid://bu814wsj38k0s" path="res://hud.tscn" id="6_hgmp7"]
-[ext_resource type="AudioStream" uid="uid://bns8jl0ihc17a" path="res://sfx/impactBell_heavy_003.ogg" id="7_cq0mb"]
+[ext_resource type="AudioStream" uid="uid://clfbdw7ysuvpx" path="res://sfx/impactBell_heavy_000.ogg" id="7_ugcxe"]
 [ext_resource type="AudioStream" uid="uid://dk8fspkup0hnx" path="res://sfx/footstep_snow_004.ogg" id="8_ltqqj"]
 
 [node name="Main" type="Node2D"]
@@ -65,7 +65,7 @@ position = Vector2(632, 448)
 [node name="HUD" parent="." instance=ExtResource("6_hgmp7")]
 
 [node name="HitSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("7_cq0mb")
+stream = ExtResource("7_ugcxe")
 
 [node name="MissedSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_ltqqj")
