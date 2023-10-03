@@ -12,6 +12,7 @@ enum {STANDBY, EXPOSED, THREATENED, HARMED}
 
 signal hit
 signal shame
+signal miss
 
 
 var state: Array
@@ -85,6 +86,8 @@ func _on_player_smashed():
 		apply(HARMED)
 		hit.emit()
 		direction = 1
+	else:
+		miss.emit()
 
 
 func _on_dance_timer_timeout():

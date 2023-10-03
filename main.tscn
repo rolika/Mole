@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ciixj23m2tf3t"]
+[gd_scene load_steps=9 format=3 uid="uid://ciixj23m2tf3t"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_38le2"]
 [ext_resource type="PackedScene" uid="uid://bvat1rvel3lkf" path="res://player.tscn" id="1_dk6sb"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cctaeaq28exs7" path="res://mole_hill.tscn" id="5_lhont"]
 [ext_resource type="PackedScene" uid="uid://bu814wsj38k0s" path="res://hud.tscn" id="6_hgmp7"]
 [ext_resource type="AudioStream" uid="uid://bns8jl0ihc17a" path="res://sfx/impactBell_heavy_003.ogg" id="7_cq0mb"]
+[ext_resource type="AudioStream" uid="uid://dk8fspkup0hnx" path="res://sfx/footstep_snow_004.ogg" id="8_ltqqj"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_38le2")
@@ -66,7 +67,11 @@ position = Vector2(632, 448)
 [node name="HitSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_cq0mb")
 
+[node name="MissedSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_ltqqj")
+
 [connection signal="game_over" from="." to="HUD" method="_on_main_game_over"]
+[connection signal="smashed" from="Player" to="." method="_on_player_smashed"]
 [connection signal="smashed" from="Player" to="Mole" method="_on_player_smashed"]
 [connection signal="smashed" from="Player" to="Mole2" method="_on_player_smashed"]
 [connection signal="smashed" from="Player" to="Mole3" method="_on_player_smashed"]
@@ -75,18 +80,25 @@ stream = ExtResource("7_cq0mb")
 [connection signal="smashed" from="Player" to="Mole6" method="_on_player_smashed"]
 [connection signal="smashed" from="Player" to="Mole7" method="_on_player_smashed"]
 [connection signal="hit" from="Mole" to="." method="_on_mole_hit"]
+[connection signal="miss" from="Mole" to="." method="_on_mole_miss"]
 [connection signal="shame" from="Mole" to="." method="_on_mole_shame"]
 [connection signal="hit" from="Mole2" to="." method="_on_mole_hit"]
+[connection signal="miss" from="Mole2" to="." method="_on_mole_miss"]
 [connection signal="shame" from="Mole2" to="." method="_on_mole_shame"]
 [connection signal="hit" from="Mole3" to="." method="_on_mole_hit"]
+[connection signal="miss" from="Mole3" to="." method="_on_mole_miss"]
 [connection signal="shame" from="Mole3" to="." method="_on_mole_shame"]
 [connection signal="hit" from="Mole4" to="." method="_on_mole_hit"]
+[connection signal="miss" from="Mole4" to="." method="_on_mole_miss"]
 [connection signal="shame" from="Mole4" to="." method="_on_mole_shame"]
 [connection signal="hit" from="Mole5" to="." method="_on_mole_hit"]
+[connection signal="miss" from="Mole5" to="." method="_on_mole_miss"]
 [connection signal="shame" from="Mole5" to="." method="_on_mole_shame"]
 [connection signal="hit" from="Mole6" to="." method="_on_mole_hit"]
+[connection signal="miss" from="Mole6" to="." method="_on_mole_miss"]
 [connection signal="shame" from="Mole6" to="." method="_on_mole_shame"]
 [connection signal="hit" from="Mole7" to="." method="_on_mole_hit"]
+[connection signal="miss" from="Mole7" to="." method="_on_mole_miss"]
 [connection signal="shame" from="Mole7" to="." method="_on_mole_shame"]
 [connection signal="mole_exposed" from="MoleHill" to="Mole" method="_on_mole_hill_mole_exposed"]
 [connection signal="mole_safe" from="MoleHill" to="Mole" method="_on_mole_hill_mole_safe"]
