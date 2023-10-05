@@ -71,6 +71,7 @@ stream = ExtResource("7_ugcxe")
 stream = ExtResource("8_ltqqj")
 
 [connection signal="game_over" from="." to="HUD" method="_on_main_game_over"]
+[connection signal="paused" from="Player" to="HUD" method="_on_player_paused"]
 [connection signal="smashed" from="Player" to="." method="_on_player_smashed"]
 [connection signal="smashed" from="Player" to="Mole" method="_on_player_smashed"]
 [connection signal="smashed" from="Player" to="Mole2" method="_on_player_smashed"]

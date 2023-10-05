@@ -85,4 +85,40 @@ max_value = 10.0
 step = 1.0
 show_percentage = false
 
+[node name="ContinueButton" type="Button" parent="."]
+process_mode = 2
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_upekl")
+theme_override_font_sizes/font_size = 24
+text = "CONTINUE"
+
+[node name="CreditsLabel" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -230.0
+offset_right = 129.0
+offset_bottom = -152.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_upekl")
+text = "written by: rolika
+sound effects: kenney.nl
+font: Luckiest Guy (Google Fonts)"
+horizontal_alignment = 1
+
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]

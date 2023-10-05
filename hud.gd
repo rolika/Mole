@@ -7,6 +7,11 @@ signal start_game
 var format_score = "%06d"
 
 
+func _ready():
+	$ContinueButton.hide()
+	$CreditsLabel.hide()
+
+
 func update_score(score):
 	$ScoreValue.text = format_score % score
 	
@@ -31,3 +36,18 @@ func _on_main_game_over():
 	await get_tree().create_timer(2.0).timeout
 	$Title.text ="Malicious\nMoles"
 	$StartButton.show()
+
+
+func _on_player_paused():
+	get_tree().paused = true
+	$Title.text = "Paused"
+	$Title.show()
+	$ContinueButton.show()
+	$CreditsLabel.show()
+
+
+func _on_continue_button_pressed():
+	$Title.hide()
+	$ContinueButton.hide()
+	$CreditsLabel.hide()
+	get_tree().paused = false
