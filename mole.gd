@@ -67,7 +67,7 @@ func _on_mole_hill_mole_exposed():
 
 func _on_mole_hill_mole_safe():
 	remove(EXPOSED)
-	if not state.has(HARMED):
+	if not (state.has(HARMED) or state.has(STANDBY)):
 		shame.emit()
 	remove(HARMED)
 	
