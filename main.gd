@@ -37,8 +37,7 @@ func _on_mole_shame():
 
 
 func _on_hud_start_game():
-	score = 0
-	shame = 0
+	_on_hud_new_game()
 	get_tree().call_group("moles", "new_session")
 
 
@@ -50,3 +49,11 @@ func _on_mole_miss():
 
 func _on_player_smashed():
 	miss = 0
+
+
+func _on_hud_new_game():	
+	score = 0
+	$HUD.update_score(score)
+	shame = 0
+	$HUD.update_shame(shame)
+	get_tree().call_group("moles", "stand_by")

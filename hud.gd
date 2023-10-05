@@ -2,6 +2,7 @@ extends CanvasLayer
 
 
 signal start_game
+signal new_game
 
 
 var format_score = "%06d"
@@ -21,7 +22,11 @@ func update_shame(shame):
 
 
 func _on_start_button_pressed():
+	get_tree().paused = false
+	new_game.emit()
 	$StartButton.hide()
+	$ContinueButton.hide()
+	$CreditsLabel.hide()
 	$ScoreValue.text = format_score % 0
 	$ShameBar.value = 0
 	$Title.text = "Get\nready!"
@@ -44,10 +49,12 @@ func _on_player_paused():
 	$Title.show()
 	$ContinueButton.show()
 	$CreditsLabel.show()
+	$StartButton.show()
 
 
 func _on_continue_button_pressed():
 	$Title.hide()
 	$ContinueButton.hide()
 	$CreditsLabel.hide()
+	$StartButton.hide()
 	get_tree().paused = false
