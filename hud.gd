@@ -4,8 +4,11 @@ extends CanvasLayer
 signal start_game
 
 
+var format_score = "%06d"
+
+
 func update_score(score):
-	$ScoreValue.text = str(score)
+	$ScoreValue.text = format_score % score
 	
 
 func update_shame(shame):
@@ -14,7 +17,7 @@ func update_shame(shame):
 
 func _on_start_button_pressed():
 	$StartButton.hide()
-	$ScoreValue.text = "0"
+	$ScoreValue.text = format_score % 0
 	$ShameBar.value = 0
 	$Title.text = "Get\nready!"
 	await get_tree().create_timer(1.0).timeout
