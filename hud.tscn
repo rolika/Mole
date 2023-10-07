@@ -117,7 +117,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("2_upekl")
 text = "written by: rolika
-sound effects: kenney.nl
+sound effects: Kenney
 font: Luckiest Guy (Google Fonts)"
 horizontal_alignment = 1
 

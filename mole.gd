@@ -1,10 +1,10 @@
 extends Area2D
 
 
-const HIDETIME = 5
-const DANCETIME = 6
-const MIN_TIME = 2
-const CRAWL_SPEED = 30
+const HIDETIME = 3
+const DANCETIME = 3
+const MIN_TIME = 1
+const CRAWL_SPEED = 100
 
 
 enum {STANDBY, EXPOSED, THREATENED, HARMED}
