@@ -3,8 +3,9 @@
 [ext_resource type="Script" path="res://mole.gd" id="1_munel"]
 [ext_resource type="Texture2D" uid="uid://blaj5yltipouq" path="res://art/mole2.png" id="2_nrfmp"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_a2635"]
-size = Vector2(64, 64)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dgv6h"]
+radius = 24.0
+height = 56.0
 
 [node name="Mole" type="Area2D" groups=["moles"]]
 collision_layer = 2
@@ -17,8 +18,8 @@ offset_bottom = 64.0
 texture = ExtResource("2_nrfmp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(32, 32)
-shape = SubResource("RectangleShape2D_a2635")
+position = Vector2(32, 36)
+shape = SubResource("CapsuleShape2D_dgv6h")
 
 [node name="HideTimer" type="Timer" parent="."]
 one_shot = true
