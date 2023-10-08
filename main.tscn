@@ -1,13 +1,18 @@
-[gd_scene load_steps=9 format=3 uid="uid://ciixj23m2tf3t"]
+[gd_scene load_steps=12 format=3 uid="uid://ciixj23m2tf3t"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_38le2"]
 [ext_resource type="PackedScene" uid="uid://bvat1rvel3lkf" path="res://player.tscn" id="1_dk6sb"]
 [ext_resource type="PackedScene" uid="uid://cuywtmn7yllqy" path="res://mole.tscn" id="2_4tly2"]
 [ext_resource type="Texture2D" uid="uid://b7scvn5rcq1no" path="res://art/grassfield.png" id="4_hfoty"]
+[ext_resource type="Script" path="res://mole_hill.gd" id="5_d1ssj"]
 [ext_resource type="PackedScene" uid="uid://cctaeaq28exs7" path="res://mole_hill.tscn" id="5_lhont"]
 [ext_resource type="PackedScene" uid="uid://bu814wsj38k0s" path="res://hud.tscn" id="6_hgmp7"]
+[ext_resource type="Texture2D" uid="uid://gjnht7xffxoh" path="res://art/molehill.png" id="6_qrygo"]
 [ext_resource type="AudioStream" uid="uid://thnwi7dumegk" path="res://sfx/jingles_STEEL05.ogg" id="7_x20nl"]
 [ext_resource type="AudioStream" uid="uid://c264lyfdg4835" path="res://sfx/footstep_carpet_001.ogg" id="8_djcua"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_scs42"]
+size = Vector2(20.6667, 14)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_38le2")
@@ -21,34 +26,58 @@ texture = ExtResource("4_hfoty")
 z_index = 1
 
 [node name="Mole" parent="." instance=ExtResource("2_4tly2")]
-position = Vector2(40, 528)
+position = Vector2(48, 512)
 
 [node name="Mole2" parent="." instance=ExtResource("2_4tly2")]
-position = Vector2(66, 320)
+position = Vector2(72, 305)
 
 [node name="Mole3" parent="." instance=ExtResource("2_4tly2")]
-position = Vector2(138, 150)
+position = Vector2(144, 136)
 
 [node name="Mole4" parent="." instance=ExtResource("2_4tly2")]
-position = Vector2(338, 104)
+position = Vector2(344, 88)
 
 [node name="Mole5" parent="." instance=ExtResource("2_4tly2")]
-position = Vector2(498, 150)
+position = Vector2(504, 136)
 
 [node name="Mole6" parent="." instance=ExtResource("2_4tly2")]
-position = Vector2(625, 286)
+position = Vector2(632, 272)
 
 [node name="Mole7" parent="." instance=ExtResource("2_4tly2")]
-position = Vector2(658, 464)
+position = Vector2(664, 448)
 
-[node name="MoleHill" parent="." instance=ExtResource("5_lhont")]
+[node name="MoleHill" type="Area2D" parent="."]
 position = Vector2(16, 512)
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("5_d1ssj")
+
+[node name="TextureRect" type="TextureRect" parent="MoleHill"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("6_qrygo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MoleHill"]
+position = Vector2(64, -8)
+shape = SubResource("RectangleShape2D_scs42")
 
 [node name="MoleHill2" parent="." instance=ExtResource("5_lhont")]
 position = Vector2(40, 305)
 
-[node name="MoleHill3" parent="." instance=ExtResource("5_lhont")]
+[node name="MoleHill3" type="Area2D" parent="."]
 position = Vector2(112, 136)
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("5_d1ssj")
+
+[node name="TextureRect" type="TextureRect" parent="MoleHill3"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("6_qrygo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MoleHill3"]
+position = Vector2(64, -8)
+shape = SubResource("RectangleShape2D_scs42")
 
 [node name="MoleHill4" parent="." instance=ExtResource("5_lhont")]
 position = Vector2(312, 88)
@@ -56,8 +85,20 @@ position = Vector2(312, 88)
 [node name="MoleHill5" parent="." instance=ExtResource("5_lhont")]
 position = Vector2(472, 136)
 
-[node name="MoleHill6" parent="." instance=ExtResource("5_lhont")]
+[node name="MoleHill6" type="Area2D" parent="."]
 position = Vector2(600, 272)
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("5_d1ssj")
+
+[node name="TextureRect" type="TextureRect" parent="MoleHill6"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("6_qrygo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MoleHill6"]
+position = Vector2(64, -8)
+shape = SubResource("RectangleShape2D_scs42")
 
 [node name="MoleHill7" parent="." instance=ExtResource("5_lhont")]
 position = Vector2(632, 448)
@@ -101,16 +142,22 @@ stream = ExtResource("8_djcua")
 [connection signal="hit" from="Mole7" to="." method="_on_mole_hit"]
 [connection signal="miss" from="Mole7" to="." method="_on_mole_miss"]
 [connection signal="shame" from="Mole7" to="." method="_on_mole_shame"]
+[connection signal="area_entered" from="MoleHill" to="MoleHill" method="_on_area_entered" flags=18]
+[connection signal="area_exited" from="MoleHill" to="MoleHill" method="_on_area_exited" flags=18]
 [connection signal="mole_exposed" from="MoleHill" to="Mole" method="_on_mole_hill_mole_exposed"]
 [connection signal="mole_safe" from="MoleHill" to="Mole" method="_on_mole_hill_mole_safe"]
 [connection signal="mole_exposed" from="MoleHill2" to="Mole2" method="_on_mole_hill_mole_exposed"]
 [connection signal="mole_safe" from="MoleHill2" to="Mole2" method="_on_mole_hill_mole_safe"]
+[connection signal="area_entered" from="MoleHill3" to="MoleHill3" method="_on_area_entered" flags=18]
+[connection signal="area_exited" from="MoleHill3" to="MoleHill3" method="_on_area_exited" flags=18]
 [connection signal="mole_exposed" from="MoleHill3" to="Mole3" method="_on_mole_hill_mole_exposed"]
 [connection signal="mole_safe" from="MoleHill3" to="Mole3" method="_on_mole_hill_mole_safe"]
 [connection signal="mole_exposed" from="MoleHill4" to="Mole4" method="_on_mole_hill_mole_exposed"]
 [connection signal="mole_safe" from="MoleHill4" to="Mole4" method="_on_mole_hill_mole_safe"]
 [connection signal="mole_exposed" from="MoleHill5" to="Mole5" method="_on_mole_hill_mole_exposed"]
 [connection signal="mole_safe" from="MoleHill5" to="Mole5" method="_on_mole_hill_mole_safe"]
+[connection signal="area_entered" from="MoleHill6" to="MoleHill6" method="_on_area_entered" flags=18]
+[connection signal="area_exited" from="MoleHill6" to="MoleHill6" method="_on_area_exited" flags=18]
 [connection signal="mole_exposed" from="MoleHill6" to="Mole6" method="_on_mole_hill_mole_exposed"]
 [connection signal="mole_safe" from="MoleHill6" to="Mole6" method="_on_mole_hill_mole_safe"]
 [connection signal="mole_exposed" from="MoleHill7" to="Mole7" method="_on_mole_hill_mole_exposed"]
