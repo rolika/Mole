@@ -118,7 +118,7 @@ grow_vertical = 0
 theme_override_fonts/font = ExtResource("2_upekl")
 text = "written by: rolika
 sound effects: Kenney
-font: Luckiest Guy (Google Fonts)"
+font: Luckiest Guy"
 horizontal_alignment = 1
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
