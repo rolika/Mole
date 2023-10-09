@@ -18,9 +18,11 @@ signal miss
 var state: Array
 var hidetimer: Timer
 var dancetimer: Timer
+var kaboomtimer: Timer
 var direction: int
 var safepos: float
 var maxheight: float
+var kaboom: Array[TextureRect]
 
 
 func _ready():
@@ -28,6 +30,8 @@ func _ready():
 	maxheight = safepos - $TextureRect.get_size().y * self.get_scale().y	
 	hidetimer = $HideTimer
 	dancetimer = $DanceTimer
+	kaboomtimer = $KaboomTimer
+	kaboom = [$Bang, $Boom, $Pow]
 	stand_by()
 
 
@@ -37,10 +41,18 @@ func stand_by():
 	apply(STANDBY)
 	hidetimer.stop()
 	dancetimer.stop()
+	hide_kaboom()
+
+
+func hide_kaboom():
+	$Bang.hide()
+	$Boom.hide()
+	$Pow.hide()	
 
 
 func new_session():
 	remove(STANDBY)
+	hide_kaboom()
 	init_timer(hidetimer, HIDETIME)
 
 
@@ -84,6 +96,8 @@ func _on_player_smashed():
 	if state.has(EXPOSED) and state.has(THREATENED):
 		remove(THREATENED)
 		apply(HARMED)
+		kaboom[randi() % len(kaboom)].show()
+		kaboomtimer.start()
 		hit.emit()
 		direction = 1
 	else:
@@ -109,3 +123,7 @@ func remove(state_):
 	var idx = state.find(state_)
 	if idx > -1:
 		state.remove_at(idx)	
+
+
+func _on_kaboom_timer_timeout():
+	hide_kaboom()
