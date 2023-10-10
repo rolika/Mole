@@ -27,7 +27,7 @@ var kaboom: Array[TextureRect]
 
 func _ready():
 	safepos = position.y
-	maxheight = safepos - $TextureRect.get_size().y * self.get_scale().y	
+	maxheight = safepos - 64
 	hidetimer = $HideTimer
 	dancetimer = $DanceTimer
 	kaboomtimer = $KaboomTimer
@@ -58,6 +58,7 @@ func new_session():
 
 func _on_hide_timer_timeout():
 	direction = -1
+	$AnimatedSprite2D.play("climb")
 
 
 func _process(delta):
@@ -71,6 +72,7 @@ func _process(delta):
 			direction = 0
 			position.y = maxheight
 			init_timer(dancetimer, DANCETIME)
+			$AnimatedSprite2D.play("dance")
 
 
 func _on_mole_hill_mole_exposed():
@@ -106,6 +108,7 @@ func _on_player_smashed():
 
 func _on_dance_timer_timeout():
 	direction = 1
+	$AnimatedSprite2D.play("climb")
 
 
 func init_timer(timer:Timer, duration:int):
