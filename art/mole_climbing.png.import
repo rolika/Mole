@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ukhdi3185ybk"
-path="res://.godot/imported/mole_animated.png-41875b087946e3d585f2a3a94e5e79a3.ctex"
+path="res://.godot/imported/mole_climbing.png-5ef4521e37881c8103ee3ff75c6db77b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/mole_animated.png"
-dest_files=["res://.godot/imported/mole_animated.png-41875b087946e3d585f2a3a94e5e79a3.ctex"]
+source_file="res://art/mole_climbing.png"
+dest_files=["res://.godot/imported/mole_climbing.png-5ef4521e37881c8103ee3ff75c6db77b.ctex"]
 
 [params]
 
