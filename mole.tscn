@@ -95,7 +95,7 @@ one_shot = true
 one_shot = true
 
 [node name="KaboomTimer" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 0.1
 one_shot = true
 
 [node name="StarsSprite" type="AnimatedSprite2D" parent="."]

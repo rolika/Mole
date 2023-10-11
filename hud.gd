@@ -5,7 +5,7 @@ signal start_game
 signal new_game
 
 
-var format_score = "%06d"
+const FORMAT_SCORE = "%06d"
 
 
 func _ready():
@@ -14,7 +14,7 @@ func _ready():
 
 
 func update_score(score):
-	$ScoreValue.text = format_score % score
+	$ScoreValue.text = FORMAT_SCORE % score
 	
 
 func update_shame(shame):
