@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://cuywtmn7yllqy"]
+[gd_scene load_steps=17 format=3 uid="uid://cuywtmn7yllqy"]
 
 [ext_resource type="Script" path="res://mole.gd" id="1_munel"]
 [ext_resource type="Texture2D" uid="uid://ukhdi3185ybk" path="res://art/mole_climbing.png" id="2_1ro6j"]
 [ext_resource type="Texture2D" uid="uid://cqn8cv77ax510" path="res://art/mole_dancing.png" id="3_bbhop"]
 [ext_resource type="Texture2D" uid="uid://j1fri2stxh4l" path="res://art/bang.png" id="3_ro5gr"]
 [ext_resource type="Texture2D" uid="uid://bsi27ctxq3nqi" path="res://art/boom.png" id="4_io475"]
+[ext_resource type="Texture2D" uid="uid://bu1jgkhr7xa68" path="res://art/stars.png" id="4_lalxc"]
 [ext_resource type="Texture2D" uid="uid://dubpnfx0buq5p" path="res://art/pow.png" id="5_k2ing"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dcwql"]
@@ -52,6 +53,28 @@ animations = [{
 radius = 24.0
 height = 56.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_pslr5"]
+atlas = ExtResource("4_lalxc")
+region = Rect2(0, 0, 20, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i1uud"]
+atlas = ExtResource("4_lalxc")
+region = Rect2(20, 0, 20, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u72ss"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pslr5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i1uud")
+}],
+"loop": true,
+"name": &"stars",
+"speed": 10.0
+}]
+
 [node name="Mole" type="Area2D" groups=["moles"]]
 collision_layer = 2
 script = ExtResource("1_munel")
@@ -74,6 +97,11 @@ one_shot = true
 [node name="KaboomTimer" type="Timer" parent="."]
 wait_time = 0.3
 one_shot = true
+
+[node name="StarsSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(32, 0)
+sprite_frames = SubResource("SpriteFrames_u72ss")
+animation = &"stars"
 
 [node name="Bang" type="TextureRect" parent="."]
 offset_left = -8.0

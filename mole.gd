@@ -42,6 +42,7 @@ func stand_by():
 	hidetimer.stop()
 	dancetimer.stop()
 	hide_kaboom()
+	$StarsSprite.hide()
 
 
 func hide_kaboom():
@@ -53,11 +54,13 @@ func hide_kaboom():
 func new_session():
 	remove(STANDBY)
 	hide_kaboom()
+	$StarsSprite.hide()
 	init_timer(hidetimer, HIDETIME)
 
 
 func _on_hide_timer_timeout():
 	direction = -1
+	$StarsSprite.hide()
 	$AnimatedSprite2D.play("climb")
 
 
@@ -80,6 +83,8 @@ func _on_mole_hill_mole_exposed():
 
 
 func _on_mole_hill_mole_safe():
+	$StarsSprite.hide()
+	$StarsSprite.stop()
 	remove(EXPOSED)
 	if not (state.has(HARMED) or state.has(STANDBY)):
 		shame.emit()
@@ -99,6 +104,8 @@ func _on_player_smashed():
 		remove(THREATENED)
 		apply(HARMED)
 		kaboom[randi() % len(kaboom)].show()
+		$StarsSprite.show()
+		$StarsSprite.play("stars")
 		kaboomtimer.start()
 		hit.emit()
 		direction = 1
