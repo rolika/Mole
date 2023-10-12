@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://ds0oberh0keua"]
+
+[ext_resource type="Texture2D" uid="uid://dofesdgwyyad8" path="res://art/grass_tile.png" id="1_gai8r"]
+[ext_resource type="Script" path="res://animated_grass.gd" id="2_hajls"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wsl3e"]
+atlas = ExtResource("1_gai8r")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t16wp"]
+atlas = ExtResource("1_gai8r")
+region = Rect2(80, 0, 40, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kam6w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wsl3e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t16wp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="AnimatedGrass" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_kam6w")
+frame_progress = 0.704281
+script = ExtResource("2_hajls")
