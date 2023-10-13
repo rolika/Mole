@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cnrwpmmybj1hm"
+path="res://.godot/imported/Sweet Sunday Grove.ogg-f6566f44e3716cf64f1ac017070ffd03.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfx/Sweet Sunday Grove.ogg"
+dest_files=["res://.godot/imported/Sweet Sunday Grove.ogg-f6566f44e3716cf64f1ac017070ffd03.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

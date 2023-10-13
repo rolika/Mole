@@ -11,6 +11,7 @@ const FORMAT_SCORE = "%06d"
 func _ready():
 	$ContinueButton.hide()
 	$CreditsLabel.hide()
+	$TitleMusic.play()
 
 
 func update_score(score):
@@ -27,6 +28,8 @@ func _on_start_button_pressed():
 	$StartButton.hide()
 	$ContinueButton.hide()
 	$CreditsLabel.hide()
+	$ActionMusic.play()
+	$TitleMusic.stop()
 	$Title.text = "Get\nready!"
 	await get_tree().create_timer(1.0).timeout
 	$Title.hide()
@@ -36,6 +39,8 @@ func _on_start_button_pressed():
 func _on_main_game_over():
 	$Title.text = "Game\nOver"
 	$Title.show()	
+	$ActionMusic.stop()
+	$TitleMusic.play()
 	await get_tree().create_timer(2.0).timeout
 	$Title.text ="Malicious\nMoles"
 	$StartButton.show()
@@ -48,6 +53,8 @@ func _on_player_paused():
 	$ContinueButton.show()
 	$CreditsLabel.show()
 	$StartButton.show()
+	$ActionMusic.stop()
+	$TitleMusic.play()
 
 
 func _on_continue_button_pressed():
@@ -56,3 +63,5 @@ func _on_continue_button_pressed():
 	$CreditsLabel.hide()
 	$StartButton.hide()
 	get_tree().paused = false
+	$ActionMusic.play()
+	$TitleMusic.stop()
