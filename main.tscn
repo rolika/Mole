@@ -51,14 +51,11 @@ position = Vector2(72, 305)
 [node name="Mole3" parent="." instance=ExtResource("2_4tly2")]
 position = Vector2(144, 136)
 
-[node name="Mole4" parent="." instance=ExtResource("2_4tly2")]
-position = Vector2(344, 88)
-
 [node name="Mole5" parent="." instance=ExtResource("2_4tly2")]
-position = Vector2(504, 136)
+position = Vector2(568, 112)
 
 [node name="Mole6" parent="." instance=ExtResource("2_4tly2")]
-position = Vector2(632, 272)
+position = Vector2(648, 272)
 
 [node name="Mole7" parent="." instance=ExtResource("2_4tly2")]
 position = Vector2(664, 448)
@@ -96,14 +93,11 @@ texture = ExtResource("6_qrygo")
 position = Vector2(64, -8)
 shape = SubResource("RectangleShape2D_scs42")
 
-[node name="MoleHill4" parent="." instance=ExtResource("5_lhont")]
-position = Vector2(312, 88)
-
 [node name="MoleHill5" parent="." instance=ExtResource("5_lhont")]
-position = Vector2(472, 136)
+position = Vector2(536, 112)
 
 [node name="MoleHill6" type="Area2D" parent="."]
-position = Vector2(600, 272)
+position = Vector2(616, 272)
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("5_d1ssj")
@@ -134,7 +128,6 @@ stream = ExtResource("8_djcua")
 [connection signal="smashed" from="Player" to="Mole" method="_on_player_smashed"]
 [connection signal="smashed" from="Player" to="Mole2" method="_on_player_smashed"]
 [connection signal="smashed" from="Player" to="Mole3" method="_on_player_smashed"]
-[connection signal="smashed" from="Player" to="Mole4" method="_on_player_smashed"]
 [connection signal="smashed" from="Player" to="Mole5" method="_on_player_smashed"]
 [connection signal="smashed" from="Player" to="Mole6" method="_on_player_smashed"]
 [connection signal="smashed" from="Player" to="Mole7" method="_on_player_smashed"]
@@ -147,9 +140,6 @@ stream = ExtResource("8_djcua")
 [connection signal="hit" from="Mole3" to="." method="_on_mole_hit"]
 [connection signal="miss" from="Mole3" to="." method="_on_mole_miss"]
 [connection signal="shame" from="Mole3" to="." method="_on_mole_shame"]
-[connection signal="hit" from="Mole4" to="." method="_on_mole_hit"]
-[connection signal="miss" from="Mole4" to="." method="_on_mole_miss"]
-[connection signal="shame" from="Mole4" to="." method="_on_mole_shame"]
 [connection signal="hit" from="Mole5" to="." method="_on_mole_hit"]
 [connection signal="miss" from="Mole5" to="." method="_on_mole_miss"]
 [connection signal="shame" from="Mole5" to="." method="_on_mole_shame"]
@@ -169,8 +159,6 @@ stream = ExtResource("8_djcua")
 [connection signal="area_exited" from="MoleHill3" to="MoleHill3" method="_on_area_exited" flags=18]
 [connection signal="mole_exposed" from="MoleHill3" to="Mole3" method="_on_mole_hill_mole_exposed"]
 [connection signal="mole_safe" from="MoleHill3" to="Mole3" method="_on_mole_hill_mole_safe"]
-[connection signal="mole_exposed" from="MoleHill4" to="Mole4" method="_on_mole_hill_mole_exposed"]
-[connection signal="mole_safe" from="MoleHill4" to="Mole4" method="_on_mole_hill_mole_safe"]
 [connection signal="mole_exposed" from="MoleHill5" to="Mole5" method="_on_mole_hill_mole_exposed"]
 [connection signal="mole_safe" from="MoleHill5" to="Mole5" method="_on_mole_hill_mole_safe"]
 [connection signal="area_entered" from="MoleHill6" to="MoleHill6" method="_on_area_entered" flags=18]
