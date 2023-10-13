@@ -100,7 +100,7 @@ func _on_area_exited(_area:Area2D):
 
 
 func _on_player_smashed():
-	if state.has(EXPOSED) and state.has(THREATENED):
+	if state.has(EXPOSED) and state.has(THREATENED) and not state.has(HARMED):
 		remove(THREATENED)
 		apply(HARMED)
 		kaboom[randi() % len(kaboom)].show()

@@ -4,28 +4,34 @@
 [ext_resource type="Texture2D" uid="uid://c0qa7g4hy7rwn" path="res://art/player.png" id="2_xqxnf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wb70j"]
-radius = 12.9677
-height = 32.6563
+radius = 14.3923
+height = 73.6878
 
 [node name="Player" type="Area2D"]
 scale = Vector2(2, 2)
 collision_mask = 2
 script = ExtResource("1_lgyto")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Shovel" type="TextureRect" parent="."]
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = -21.0
-offset_top = -18.0
-offset_right = 79.0
-offset_bottom = 22.0
+offset_left = -100.0
+offset_top = -16.0
+offset_bottom = 24.0
 grow_vertical = 2
+rotation = 0.785398
+pivot_offset = Vector2(100, 15)
 size_flags_horizontal = 4
 texture = ExtResource("2_xqxnf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
-rotation = -1.08102
+position = Vector2(-68, -32)
+rotation = 0.261799
 shape = SubResource("CapsuleShape2D_wb70j")
-metadata/_edit_group_ = true
+
+[node name="SmashTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="smashed" from="." to="." method="_on_smashed"]
+[connection signal="timeout" from="SmashTimer" to="." method="_on_smash_timer_timeout"]
