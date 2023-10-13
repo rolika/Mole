@@ -5,9 +5,32 @@ signal smashed
 signal paused
 
 
+var shovel_direction: int
+
+
 func _process(_delta):
 	# bind player to mouse position
 	position = get_global_mouse_position()
+	if position.x > get_viewport().size.x / 2:
+		shovel_direction = -1
+		$Shovel.flip_h = true
+		$Shovel.rotation_degrees = 315
+		$Shovel.pivot_offset.x = 0
+		$Shovel.pivot_offset.y = 15
+		$Shovel.position.x = 0
+		$Shovel.position.y = -15
+		$SmashArea.position.x = 68
+		$SmashArea.rotation_degrees = -15
+	else:
+		shovel_direction = 1
+		$Shovel.flip_h = false
+		$Shovel.rotation_degrees = 45
+		$Shovel.pivot_offset.x = 100
+		$Shovel.pivot_offset.y = 15
+		$Shovel.position.x = -100
+		$Shovel.position.y = -15
+		$SmashArea.position.x = -68
+		$SmashArea.rotation_degrees = 15
 
 
 func _input(event):
@@ -23,9 +46,4 @@ func _on_smash_timer_timeout():
 
 
 func _on_smashed():
-	self.rotation_degrees = -45
-
-
-func flip():
-	# flip the shovel depending on horizontal position
-	pass
+	self.rotation_degrees = -45 * shovel_direction
