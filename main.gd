@@ -16,6 +16,8 @@ var moles: int
 
 
 func _ready():
+	await get_tree().create_timer(5.0).timeout
+	$SplashScreen.hide()
 	randomize()
 	score = 0
 	shame = 0
@@ -44,6 +46,7 @@ func _on_mole_shame():
 
 
 func _on_hud_start_game():
+	$SplashScreen.hide()
 	_on_hud_new_game()
 	get_tree().call_group("moles", "new_session")
 
