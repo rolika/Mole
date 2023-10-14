@@ -65,3 +65,7 @@ func _on_continue_button_pressed():
 	get_tree().paused = false
 	$ActionMusic.play()
 	$TitleMusic.stop()
+
+
+func _on_exit_button_pressed():
+	get_tree().quit()
