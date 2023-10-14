@@ -3,6 +3,7 @@ extends Node2D
 
 const SCORE = 100  # score for each mole smashed
 const MAX_SHAME = 10  # it's a shame if you let a mole go
+const SAVE_PATH = "user://save.hi"
 
 
 signal game_over
@@ -20,6 +21,8 @@ func _ready():
 	shame = 0
 	miss = 0
 	moles = get_tree().get_nodes_in_group("moles").size()
+	if FileAccess.file_exists(SAVE_PATH):
+		$HUD.update_hiscore(load_hiscore())
 
 
 func _on_mole_hit():
@@ -29,6 +32,7 @@ func _on_mole_hit():
 	var hiscore = int($HUD/HiScoreValue.text)
 	if score > hiscore:
 		$HUD.update_hiscore(score)
+		save_hiscore()
 
 
 func _on_mole_shame():
@@ -60,3 +64,13 @@ func _on_hud_new_game():
 	shame = 0
 	$HUD.update_shame(shame)
 	get_tree().call_group("moles", "stand_by")
+
+
+func save_hiscore():
+	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
+	file.store_var(score)
+
+
+func load_hiscore() -> int:
+	var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
+	return file.get_var()
