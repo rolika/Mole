@@ -26,6 +26,9 @@ func _on_mole_hit():
 	score += SCORE
 	$HUD.update_score(score)
 	$HitSound.play()
+	var hiscore = int($HUD/HiScoreValue.text)
+	if score > hiscore:
+		$HUD.update_hiscore(score)
 
 
 func _on_mole_shame():

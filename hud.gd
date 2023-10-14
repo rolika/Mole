@@ -16,6 +16,10 @@ func _ready():
 
 func update_score(score):
 	$ScoreValue.text = FORMAT_SCORE % score
+
+
+func update_hiscore(score):
+	$HiScoreValue.text = FORMAT_SCORE % score
 	
 
 func update_shame(shame):

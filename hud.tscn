@@ -62,10 +62,27 @@ offset_bottom = 46.0
 theme_override_fonts/font = ExtResource("2_upekl")
 text = "SCORE:"
 
+[node name="HiScoreLabel" type="Label" parent="."]
+offset_left = 192.0
+offset_top = 20.0
+offset_right = 248.0
+offset_bottom = 46.0
+theme_override_fonts/font = ExtResource("2_upekl")
+text = "HISCORE:"
+
 [node name="ScoreValue" type="Label" parent="."]
 offset_left = 72.0
 offset_top = 20.0
 offset_right = 112.0
+offset_bottom = 46.0
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("2_upekl")
+text = "000000"
+
+[node name="HiScoreValue" type="Label" parent="."]
+offset_left = 272.0
+offset_top = 20.0
+offset_right = 333.0
 offset_bottom = 46.0
 size_flags_horizontal = 0
 theme_override_fonts/font = ExtResource("2_upekl")
@@ -106,6 +123,7 @@ theme_override_font_sizes/font_size = 24
 text = "CONTINUE"
 
 [node name="ExitButton" type="Button" parent="."]
+process_mode = 3
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
