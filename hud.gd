@@ -31,6 +31,7 @@ func _on_start_button_pressed():
 	new_game.emit()
 	$StartButton.hide()
 	$ContinueButton.hide()
+	$ExitButton.hide()
 	$CreditsLabel.hide()
 	$ActionMusic.play()
 	$TitleMusic.stop()
@@ -48,6 +49,7 @@ func _on_main_game_over():
 	await get_tree().create_timer(2.0).timeout
 	$Title.text ="Malicious\nMoles"
 	$StartButton.show()
+	$ExitButton.show()
 
 
 func _on_player_paused():
@@ -57,6 +59,7 @@ func _on_player_paused():
 	$ContinueButton.show()
 	$CreditsLabel.show()
 	$StartButton.show()
+	$ExitButton.show()
 	$ActionMusic.stop()
 	$TitleMusic.play()
 
@@ -66,6 +69,7 @@ func _on_continue_button_pressed():
 	$ContinueButton.hide()
 	$CreditsLabel.hide()
 	$StartButton.hide()
+	$ExitButton.hide()
 	get_tree().paused = false
 	$ActionMusic.play()
 	$TitleMusic.stop()
