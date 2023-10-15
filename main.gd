@@ -16,7 +16,7 @@ var moles: int
 
 
 func _ready():
-	await get_tree().create_timer(5.0).timeout
+	await get_tree().create_timer(2.0).timeout
 	$SplashScreen.hide()
 	randomize()
 	score = 0
